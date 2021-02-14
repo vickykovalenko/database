@@ -61,7 +61,7 @@ int del_m(int department_id)
     
     if(department.quantity_staff) //del-s for all slaves
     {
-        FILE* staffTable = fopen("/Users/andrej/Documents/lab_db/lab_db/garbage_s.txt", "r+b");
+        FILE* staffTable = fopen("/Users/andrej/Documents/lab_db/lab_db/Staff.fl", "r+b");
         
         struct Staff staff;
         fseek(staffTable, department.firstStaffAddress, SEEK_SET);
@@ -70,7 +70,7 @@ int del_m(int department_id)
             fread(&staff, sizeof(struct Staff), 1, staffTable);
             fclose(staffTable);
             del_s(department, staff, staff.staff_id);
-            staffTable = fopen("/Users/andrej/Documents/lab_db/lab_db/garbage_s.txt", "r+b");
+            staffTable = fopen("/Users/andrej/Documents/lab_db/lab_db/Staff.fl", "r+b");
             
             fseek(staffTable, staff.nextAddress, SEEK_SET);
         }
